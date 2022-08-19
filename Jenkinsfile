@@ -9,7 +9,7 @@ pipeline {
                 }                
             }
         }
-
+/*
         stage ('Verificar imagem com Neuvector') {
             steps {
                 script {
@@ -17,7 +17,7 @@ pipeline {
                 }
             }
         }
-        
+  */      
         stage ('Push Image') {
             steps {
                 script {

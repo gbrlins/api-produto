@@ -17,7 +17,17 @@ pipeline {
                 }
             }
         }
-     
+        
+        stage ('Push Image Teste') {
+            steps {
+                script {
+                    docker.withRegistry('https://registry.hub.docker.com') {
+                        dockerapp.push('latest')
+                        dockerapp.push("${env.BUILD_ID}")
+                    }
+                }
+            }
+        }
         stage ('Push Image') {
             steps {
                 script {

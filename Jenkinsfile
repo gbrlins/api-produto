@@ -17,7 +17,18 @@ pipeline {
                 }
             }
         }
-       
+     
+        stage ('Push Image Teste') {
+            steps {
+                script {
+                    docker.withRegistry('192.168.68.116:30743', 'docker-registry') {
+                        dockerapp.push('latest')
+                        dockerapp.push("${env.BUILD_ID}")
+                    }
+                }
+            }
+        }
+        
         stage ('Push Image') {
             steps {
                 script {

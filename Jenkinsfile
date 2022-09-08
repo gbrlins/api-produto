@@ -10,7 +10,7 @@ pipeline {
             }
         }
 
-        stage ('Verificar imagem com Neuvector') {
+        stage ('Verificar imagem na registry temporaria com Neuvector') {
             steps {
                 script {
                     neuvector nameOfVulnerabilityToExemptFour: '', nameOfVulnerabilityToExemptOne: '', nameOfVulnerabilityToExemptThree: '', nameOfVulnerabilityToExemptTwo: '', nameOfVulnerabilityToFailFour: '', nameOfVulnerabilityToFailOne: '', nameOfVulnerabilityToFailThree: '', nameOfVulnerabilityToFailTwo: '', numberOfHighSeverityToFail: '', numberOfMediumSeverityToFail: '', registrySelection: 'registry-container', repository: 'gabriellins/api-produto', scanLayers: true, scanTimeout: 10, tag: '1'
@@ -18,16 +18,6 @@ pipeline {
             }
         }
         
-        stage ('Push Image Teste') {
-            steps {
-                script {
-                    docker.withRegistry('http://192.168.68.116:30743') {
-                        dockerapp.push('latest')
-                        dockerapp.push("${env.BUILD_ID}")
-                    }
-                }
-            }
-        }
         stage ('Push Image') {
             steps {
                 script {

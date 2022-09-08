@@ -21,7 +21,7 @@ pipeline {
         stage ('Push Image Teste') {
             steps {
                 script {
-                    docker.withRegistry('https://registry.hub.docker.com') {
+                    docker.withRegistry('http://192.168.68.116:30743') {
                         dockerapp.push('latest')
                         dockerapp.push("${env.BUILD_ID}")
                     }

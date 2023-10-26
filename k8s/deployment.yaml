@@ -17,6 +17,8 @@ spec:
       labels:
         app: mongodb
     spec:
+      nodeSelector:
+        aws/elasticip: "true"
       containers:
         - name: mongodb
           image: mongo:4.4.5

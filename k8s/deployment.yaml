@@ -42,6 +42,8 @@ spec:
     - port: 27017
       targetPort: 27017
   type: ClusterIP
+  nodeSelector:
+    aws/elasticip: "true"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -62,6 +64,8 @@ spec:
       labels:
         app: api
     spec:
+      nodeSelector:
+        aws/elasticip: "true"
       containers:
         - name: api
           image: gabriellins/api-produto:{{tag}}
@@ -81,5 +85,8 @@ spec:
     app: api
   ports:
     - port: 80
-      targetPort: 8080   
+      targetPort: 8080
+      nodePort: 30316
   type: NodePort
+  nodeSelector:
+    aws/elasticip: "true"

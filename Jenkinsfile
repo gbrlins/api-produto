@@ -5,7 +5,7 @@ pipeline {
         stage ('Construindo Imagem...') {
             steps {
                 script {
-                    dockerapp = docker.build("gabriellins/api-produto:${env.BUILD_ID}", '-f ./src/Dockerfile ./src') 
+                    dockerapp = docker.build("gabriellins/api-produto:latest", '-f ./src/Dockerfile ./src') 
                 }                
             }
         }

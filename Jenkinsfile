@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage ('Construindo Imagem...') {
+        stage ('Construindo Imagem e armazenando internamente...') {
             steps {
                 script {
                     dockerapp = docker.build("gabriellins/api-produto:latest", '-f ./src/Dockerfile ./src') 

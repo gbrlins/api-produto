@@ -45,12 +45,13 @@ pipeline {
             }
         }
 
-        stage ('Deploy Kubernetes') {
+        stage ('Deploy da aplicação no cluster "geeko-dev"') {
             environment {
-                tag_version = "${env.BUILD_ID}"
+                tag_version = "latest"
+                //tag_version = "${env.BUILD_ID}"
             }
             steps {
-                withKubeConfig([credentialsId: 'kubeconfig']) {
+                withKubeConfig([credentialsId: 'kubeconfig-geeko-dev']) {
                     sh 'sed -i "s/{{tag}}/$tag_version/g" ./k8s/deployment.yaml'
                     sh 'kubectl apply -f ./k8s/deployment.yaml'
                 }

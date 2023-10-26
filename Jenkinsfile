@@ -37,7 +37,7 @@ pipeline {
         stage ('Enviando imagem para registry de produção') {
             steps {
                 script {
-                    docker.withRegistry('https://harbor.geekoworld.com/pipeline-images', 'cred-harbor') {
+                    docker.withRegistry('https://harbor.geekoworld.com/pipeline-images/', 'cred-harbor') {
                         dockerapp.push('latest')
                         //dockerapp.push("${env.BUILD_ID}")
                     }

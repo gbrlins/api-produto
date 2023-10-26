@@ -49,7 +49,7 @@ metadata:
   name: api
   namespace: ci-cd
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: api

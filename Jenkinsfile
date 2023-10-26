@@ -53,7 +53,7 @@ pipeline {
             steps {
                 withKubeConfig([credentialsId: 'kubeconfig-geeko-dev']) {
                     sh 'sed -i "s/{{tag}}/$tag_version/g" ./k8s/deployment.yaml'
-                    sh 'kubectl apply -f ./k8s/deployment.yaml -n ci-cd' 
+                    sh 'kubectl create -f ./k8s/deployment.yaml -n ci-cd' 
                 }
             }
         }

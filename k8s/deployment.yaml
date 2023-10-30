@@ -18,7 +18,7 @@ spec:
         app: mongodb
     spec:
       nodeSelector:
-        kubernetes.io/hostname: geeko-dev-master-a1d4c60c-dwjb
+        kubernetes.io/hostname: geeko-dev-worker-1891dfc9-9ksrh
       containers:
         - name: mongodb
           image: mongo:4.4.5
@@ -63,7 +63,7 @@ spec:
         app: api
     spec:
       nodeSelector:
-        kubernetes.io/hostname: geeko-dev-master-a1d4c60c-dwjb
+        kubernetes.io/hostname: geeko-dev-worker-1891dfc9-9ksrh
       containers:
         - name: api
           image: gabriellins/api-produto:{{tag}}

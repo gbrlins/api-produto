@@ -17,8 +17,6 @@ spec:
       labels:
         app: mongodb
     spec:
-      nodeSelector:
-        kubernetes.io/hostname: geeko-dev-worker-1891dfc9-9ksrh
       containers:
         - name: mongodb
           image: mongo:4.4.5
@@ -41,7 +39,7 @@ spec:
   ports:
     - port: 27017
       targetPort: 27017
-  type: NodePort
+  type: ClusterIP
 ---
 apiVersion: apps/v1
 kind: Deployment

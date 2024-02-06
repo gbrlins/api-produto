@@ -60,8 +60,6 @@ spec:
       labels:
         app: api
     spec:
-      nodeSelector:
-        kubernetes.io/hostname: geeko-dev-worker-1891dfc9-9ksrh
       containers:
         - name: api
           image: gabriellins/api-produto:{{tag}}

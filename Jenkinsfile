@@ -34,16 +34,16 @@ pipeline {
             }
         }
 
-#        stage ('Enviando imagem para registry de produção') {
-#            steps {
-#                script {
-#                    docker.withRegistry('https://harbor.geekoworld.com/pipeline-images/', 'cred-harbor') {
-#                        dockerapp.push('latest')
-#                        //dockerapp.push("${env.BUILD_ID}")
-#                    }
-#                }
-#            }
-#        }
+//        stage ('Enviando imagem para registry de produção') {
+//            steps {
+//                script {
+//                    docker.withRegistry('https://harbor.geekoworld.com/pipeline-images/', 'cred-harbor') {
+//                        dockerapp.push('latest')
+//                        //dockerapp.push("${env.BUILD_ID}")
+//                    }
+//                }
+//            }
+//        }
 
         stage ('Deploy da aplicação no cluster') {
             environment {

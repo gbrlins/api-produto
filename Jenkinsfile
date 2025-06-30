@@ -34,24 +34,24 @@ pipeline {
             }
         }
 
-        stage ('Enviando imagem para registry de produção') {
-            steps {
-                script {
-                    docker.withRegistry('https://harbor.geekoworld.com/pipeline-images/', 'cred-harbor') {
-                        dockerapp.push('latest')
-                        //dockerapp.push("${env.BUILD_ID}")
-                    }
-                }
-            }
-        }
+#        stage ('Enviando imagem para registry de produção') {
+#            steps {
+#                script {
+#                    docker.withRegistry('https://harbor.geekoworld.com/pipeline-images/', 'cred-harbor') {
+#                        dockerapp.push('latest')
+#                        //dockerapp.push("${env.BUILD_ID}")
+#                    }
+#                }
+#            }
+#        }
 
-        stage ('Deploy da aplicação no cluster "geeko-dev"') {
+        stage ('Deploy da aplicação no cluster') {
             environment {
                 tag_version = "latest"
                 //tag_version = "${env.BUILD_ID}"
             }
             steps {
-                withKubeConfig([credentialsId: 'kubeconfig-geeko-dev']) {
+                withKubeConfig([credentialsId: 'kubeconfig-geeko-cluster']) {
                     sh 'sed -i "s/{{tag}}/$tag_version/g" ./k8s/deployment.yaml'
                     sh 'kubectl apply -f ./k8s/deployment.yaml -n ci-cd' 
                 }
